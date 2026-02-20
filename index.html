@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Junior IT Specialist - Serhii Gorin | Web Dev, Linux, CCNA, AWS">
+    <meta name="keywords" content="Junior IT, CCNA, Linux, INF.03, Web Developer, AWS, Portfolio">
+    <meta name="author" content="Serhii Gorin">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Serhii Gorin | Junior IT Specialist">
+    <meta property="og:description" content="Web Dev + Linux + CCNA. Projekty, sieci, automatyzacja.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gorinserhii.pl">
+    <meta property="og:image" content="https://gorinserhii.pl/avatar.png">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <title>Serhii Gorin - IT Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --border: #e9ecef;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --primary: #0066cc;
+            --secondary: #0052a3;
+            --accent: #28a745;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-light: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(40, 167, 69, 0.1));
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-card: #2d2d2d;
+            --border: #404040;
+            --text-main: #f8f9fa;
+            --text-muted: #adb5bd;
+            --nav-bg: rgba(30, 30, 30, 0.95);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(even) {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-family: var(--font-head);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            background: var(--nav-bg);
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: var(--font-head);
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: var(--font-head);
+        }
+
+        .nav-btn:hover {
+            color: var(--text-main);
+            border-color: var(--primary);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-left: 15px;
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.03) 0%, rgba(40, 167, 69, 0.03) 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--gradient-light);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 102, 204, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .typewriter-container {
+            font-size: 1.8rem;
+            font-family: var(--font-head);
+            color: var(--primary);
+            margin-bottom: 30px;
+            height: 1.6em;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .card {
+            width: 340px;
+            height: 440px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .avatar-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--gradient);
+            padding: 5px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--gradient-light);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .marquee-container {
+            width: 100%;
+            padding: 25px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 40s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 35px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
+        .marquee-item i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .about-content {
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-light);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 40px;
+        }
+
+        .about-image i {
+            font-size: 7rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: var(--shadow);
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--bg-card);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 35px;
+            z-index: 3;
+            box-shadow: 0 0 0 4px var(--bg-primary);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -16px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -16px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 38px;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--border);
+            border-style: solid;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 38px;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--border) transparent transparent;
+            border-style: solid;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .skills-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .skill-col {
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-head {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skill-head i {
+            font-size: 2rem;
+            color: white;
+            background: var(--gradient);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 102, 204, 0.2);
+        }
+
+        .skill-head h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .skill-head p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .skill-list li {
+            list-style: none;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-list span {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .bar-bg {
+            width: 50%;
+            height: 10px;
+            background: rgba(108, 117, 125, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+            transition: width 1s ease;
+        }
+
+        .experience-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .exp-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .exp-card:nth-child(2) {
+            border-left-color: #28a745;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .exp-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .exp-date {
+            color: #28a745; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .exp-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: var(--shadow);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            padding: 30px;
+            color: white;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .project-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-body p {
+            margin-bottom: 25px;
+            color: var(--text-muted);
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background: var(--gradient-light);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 102, 204, 0.2);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--bg-primary);
+            color: var(--text-main);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            width: 100%;
+            border: 2px solid var(--border);
+            transition: var(--transition);
+            font-family: var(--font-head);
+        }
+
+        .project-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(40, 167, 69, 0.05);
+        }
+
+        .contact-box {
+            text-align: center;
+            background: var(--bg-card);
+            padding: 70px 50px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 35px 0;
+        }
+
+        .social-links a {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.95rem;
+            margin-top: 50px;
+            background: var(--bg-secondary);
+        }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background: var(--gradient);
+            color: white;
+            cursor: pointer;
+            padding: 16px;
+            border-radius: 50%;
+            font-size: 20px;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--bg-secondary);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 968px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--nav-bg);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: left 0.3s ease;
+                gap: 25px;
+                padding-top: 40px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .typewriter-container {
+                justify-content: center;
+            }
+
+            .skills-wrapper,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: 21px;
+                right: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .typewriter-container {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .card {
+                height: 400px;
+                width: 300px;
+            }
+
+            .hero-desc {
+                font-size: 1.1rem;
+            }
+
+            .project-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .typewriter-container {
+                font-size: 1.3rem;
+            }
+
+            .contact-box {
+                padding: 50px 30px;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <div class="logo" aria-label="Serhii Gorin Logo">SG<span>.</span></div>
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link" id="navAbout" aria-current="page">O Mnie</a></li>
+                <li><a href="#skills" class="nav-link" id="navSkills">Umiejętności</a></li>
+                <li><a href="#experience" class="nav-link" id="navExperience">Doświadczenie</a></li>
+                <li><a href="#projects" class="nav-link" id="navProjects">Projekty</a></li>
+                <li><a href="#contact" class="nav-link" id="navContact">Kontakt</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="nav-btn" id="langBtn" aria-label="Change language">EN</button>
+                <button class="nav-btn" id="themeBtn" aria-label="Toggle theme">☀️</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="hero-tag" id="statusTag">🚀 Otwarty na współpracę</span>
+                    <h1 class="text-gradient" id="greeting">Cześć!</h1>
+                    <div class="typewriter-container" aria-live="polite">
+                        <span id="typewriter"></span><span class="cursor" aria-hidden="true">|</span>
+                    </div>
+                    <p class="hero-desc" id="heroDesc">
+                        Łączę świat <strong>aplikacji webowych (INF.03)</strong> z solidnym fundamentem <strong>sieci i systemów (CCNA/Linux)</strong>. Tworzę wydajny kod i bezpieczną infrastrukturę.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary" id="btnProjects" aria-label="View projects">Zobacz Projekty</a>
+                        <a href="#contact" class="btn btn-outline" id="btnContact" aria-label="Contact me">Skontaktuj się</a>
+                    </div>
+                </div>
+
+                <div class="card-wrapper">
+                    <div class="card" role="region" aria-label="Profile card">
+                        <div class="avatar-circle">
+                            <div class="avatar-img" aria-label="Serhii Gorin Avatar">SG</div>
+                        </div>
+                        <h3>Serhii Gorin</h3>
+                        <p>IT Specialist</p>
+                        <div class="card-badges">
+                            <span class="badge">INF.03</span>
+                            <span class="badge">INF.02</span>
+                            <span class="badge">CCNA</span>
+                            <span class="badge">Linux</span>
+                            <span class="badge">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="marquee-container" aria-hidden="true">
+            <div class="marquee-content">
+                <span class="marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="marquee-item"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="marquee-item"><i class="fab fa-php"></i> PHP</span>
+                <span class="marquee-item"><i class="fas fa-database"></i> SQL</span>
+                <span class="marquee-item"><i class="fab fa-linux"></i> Linux</span>
+                <span class="marquee-item"><i class="fas fa-network-wired"></i> Cisco</span>
+                <span class="marquee-item"><i class="fab fa-aws"></i> AWS</span>
+                <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+                <span class="marquee-item"><i class="fas fa-terminal"></i> Bash</span>
+                <span class="marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="marquee-item"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="marquee-item"><i class="fab fa-php"></i> PHP</span>
+                <span class="marquee-item"><i class="fas fa-database"></i> SQL</span>
+                <span class="marquee-item"><i class="fab fa-linux"></i> Linux</span>
+                <span class="marquee-item"><i class="fas fa-network-wired"></i> Cisco</span>
+                <span class="marquee-item"><i class="fab fa-aws"></i> AWS</span>
+                <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+                <span class="marquee-item"><i class="fas fa-terminal"></i> Bash</span>
+            </div>
+        </div>
+        
+        <section class="section container" id="about">
+            <h2 class="section-title text-gradient" id="aboutTitle">O Mnie</h2>
+            <div class="about-content">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p id="aboutIntro">Moja przygoda z IT zaczęła się od ciekawości "jak to działa pod maską". Jako obywatel Ukrainy, który kontynuuje edukację w Polsce, mam unikalną perspektywę i determinację.</p>
+                        <p id="aboutJourney">Obecnie kończę technikum informatyczne z kwalifikacjami INF.02 i INF.03. Moja droga edukacyjna obejmuje także certyfikaty AWS, Cisco, Linux i Google IT Support.</p>
+                        <p id="aboutMotivation">Mam pasję do networkingu, Linuxa, chmury i cybersecurity. Moje projekty koncentrują się na budowaniu bezpiecznej infrastruktury i tworzeniu efektywnych aplikacji webowych.</p>
+                        <p id="aboutGoals">Moim celem jest praca jako Junior Network & Systems Engineer, gdzie mogę zastosować wiedzę w środowisku produkcyjnym.</p>
+                    </div>
+                    <div class="about-image" aria-hidden="true">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="timeline">
+            <h2 class="section-title text-gradient" id="timelineTitle">Moja Ścieżka</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="time1Date">2026 (Planowane)</div>
+                        <h3 id="time1Title">Kwalifikacja INF.03</h3>
+                        <p id="time1Desc">Tworzenie aplikacji internetowych i baz danych oraz administrowanie bazami</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="time2Date">2025</div>
+                        <h3 id="time2Title">Projekty Open Source</h3>
+                        <p id="time2Desc">Rozwój własnych projektów i udział w społeczności IT</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="time3Date">2024</div>
+                        <h3 id="time3Title">CCNA</h3>   
+                        <p id="time3Desc">Cisco Certified Network Associate - podstawy sieci komputerowych</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date" id="time4Date">2024 (Ukończone)</div>
+                        <h3 id="time4Title">Kwalifikacja INF.02</h3>
+                        <p id="time4Desc">Administracja i eksploatacja systemów komputerowych, urządzeń peryferyjnych i sieci</p> 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="skills">
+            <h2 class="section-title text-gradient" id="skillsTitle">Moje Umiejętności</h2>
+            <div class="skills-wrapper">
+                <div class="skill-col">
+                    <div class="skill-head">
+                        <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                        <div>
+                            <h3>Web Development</h3>
+                            <p>INF.03</p>
+                        </div>
+                    </div>
+                    <ul class="skill-list">
+                        <li><span>HTML5 / CSS3 / JS</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></li>
+                        <li><span>PHP & MySQL</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></li>
+                        <li><span>Git & GitHub</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></li>
+                    </ul>
+                </div>
+
+                <div class="skill-col">
+                    <div class="skill-head">
+                        <i class="fas fa-server" aria-hidden="true"></i>
+                        <div>
+                            <h3>Systems & Networks</h3>
+                            <p>INF.02 & CCNA</p>
+                        </div>
+                    </div>
+                    <ul class="skill-list">
+                        <li><span>Cisco (Switching/Routing)</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></li>
+                        <li><span>Linux / Bash</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></li>
+                        <li><span>Security (UFW/VPN)</span><div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="experience">
+            <h2 class="section-title text-gradient" id="expTitle">Doświadczenie</h2>
+            
+            <div class="experience-cards">
+                <div class="exp-card">
+                    <h3 id="exp1Title">Stażysta IT Support - Kompland s.c.</h3>
+                    <p class="exp-date" id="exp1Date">05/2025 (160h)</p>
+                    <p id="exp1Desc">Diagnostyka sprzętu, instalacja systemów operacyjnych, backup danych, obsługa klienta.</p>
+                </div>
+                
+                <div class="exp-card">
+                    <h3 id="exp2Title">Praktykant IT - PGKiM Sandomierz</h3>
+                    <p class="exp-date" id="exp2Date">10/2023 (140h)</p>
+                    <p id="exp2Desc">Wsparcie działu IT, konfiguracja stacji roboczych, podstawy administracji siecią lokalną.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="projects">
+            <h2 class="section-title text-gradient" id="projectsTitle">Moje Projekty</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">🔥</div>
+                        <h3 id="project1Title">Automatyzacja Zapory Linux</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project1Desc">Kompleksowa automatyzacja UFW i Fail2ban z raportowaniem w Markdown. System loguje ataki i generuje raporty.</p>
+                        <div class="project-tags">
+                            <span class="tag">Bash</span>
+                            <span class="tag">UFW</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/Linux-Firewall-Automation" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">📱</div>
+                        <h3 id="project2Title">Alerty Telegram + Fail2ban</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project2Desc">System powiadomień w czasie rzeczywistym wysyłający podsumowania blokad IP do Telegram. Dashboard HTML ze statystykami.</p>
+                        <div class="project-tags">
+                            <span class="tag">API</span>
+                            <span class="tag">Telegram</span>
+                            <span class="tag">HTML</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/linux-fail2ban-telegram-alerts" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">🌐</div>
+                        <h3 id="project3Title">Sieć Korporacyjna VPN/DMZ</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project3Desc">Site-to-site VPN z IPsec, DMZ, NAT/PAT, OSPF, VLAN, ACLs. Symulacja bezpiecznej sieci korporacyjnej w Packet Tracer.</p>
+                        <div class="project-tags">
+                            <span class="tag">Cisco</span>
+                            <span class="tag">VPN</span>
+                            <span class="tag">OSPF</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/PacketTracer-VPN-NAT-DMZ-Lab" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">🔧</div>
+                        <h3 id="project4Title">OSPF + IPv6 + QoS</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project4Desc">Zaawansowana sieć z Inter-VLAN routing, OSPFv3, dual-stack IPv6 (SLAAC/DHCPv6) i QoS. Skalowalność i troubleshooting.</p>
+                        <div class="project-tags">
+                            <span class="tag">OSPFv3</span>
+                            <span class="tag">IPv6</span>
+                            <span class="tag">QoS</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/PacketTracer-Corporate-Network-Project" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">🔌</div>
+                        <h3 id="project5Title">Laboratorium VLAN & DHCP</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project5Desc">Segmentacja sieci przez VLANy, Router-on-a-Stick, DHCP dla automatycznej konfiguracji IP oraz static routing.</p>
+                        <div class="project-tags">
+                            <span class="tag">VLAN</span>
+                            <span class="tag">DHCP</span>
+                            <span class="tag">Routing</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/PacketTracer-VLAN-DHCP-Lab" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon" aria-hidden="true">🛡️</div>
+                        <h3 id="project6Title">Fail2ban Security</h3>
+                    </div>
+                    <div class="project-body">
+                        <p id="project6Desc">Konfiguracja Fail2ban na Ubuntu. Parser logów generuje statystyki ataków w formacie Markdown z analizą zagrożeń.</p>
+                        <div class="project-tags">
+                            <span class="tag">Ubuntu</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <a href="https://github.com/gorinserhii-spec/linux-fail2ban-security" class="project-link" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="contact">
+            <div class="contact-box">
+                <h2 id="contactTitle" style="font-size: 2.5rem; margin-bottom: 20px;">Szukasz Juniora?</h2>
+                <p id="contactText" style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 30px;">
+                    Jestem gotowy do podjęcia stażu lub pracy. Posiadam wiedzę z certyfikatów i praktykę z własnych projektów.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/gorinserhii-spec" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/gorinserhii/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                    <a href="mailto:gorinserhii@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sr-only">Email</span>
+                    </a>
+                </div>
+                
+                    <a href="cv.pdf" download class="btn btn-primary" style="font-size: 1.2rem;" aria-label="Download CV">
+                        <i class="fas fa-download" aria-hidden="true"></i> &nbsp; <span id="btnDownloadCv">Pobierz CV</span>
+                    </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p id="footerText">&copy; 2026 Serhii Gorin. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <button id="backToTop" title="Go to top" aria-label="Back to top">↑</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                }, 500);
+            });
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            const isActive = navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isActive);
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', false);
+                const icon = hamburger.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        const words = ["Junior IT Specialist", "Web Developer (INF.03)", "Linux Administrator", "Network Specialist"];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const heading = document.getElementById('typewriter');
+            if (!heading) return;
+            
+            const word = words[i].split("");
+            heading.textContent = '';
+            
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    heading.textContent += word.shift();
+                } else {
+                    setTimeout(deleteType, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deleteType() {
+            const heading = document.getElementById('typewriter');
+            if (!heading) return;
+            
+            const word = heading.textContent.split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    heading.textContent = word.join("");
+                } else {
+                    i = (i + 1) % words.length;
+                    typeWriter();
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+        typeWriter();
+
+        const backBtn = document.getElementById("backToTop");
+        const sections = document.querySelectorAll('section');
+
+        function handleScroll() {
+            const scrollPos = window.scrollY + 100;
+            
+            backBtn.style.display = scrollPos > 300 ? "block" : "none";
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                
+                if (scrollPos >= top && scrollPos < top + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                            link.setAttribute('aria-current', 'page');
+                        }
+                    });
+                }
+            });
+        }
+
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(handleScroll, 10);
+        });
+
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        const translations = {
+            pl: {
+                navAbout: "O Mnie",
+                navSkills: "Umiejętności",
+                navExperience: "Doświadczenie",
+                navProjects: "Projekty",
+                navContact: "Kontakt",
+                greeting: "Cześć!",
+                statusTag: "🚀 Otwarty na współpracę",
+                heroDesc: "Łączę świat <strong>aplikacji webowych (INF.03)</strong> z solidnym fundamentem <strong>sieci i systemów (CCNA/Linux)</strong>. Tworzę wydajny kod i bezpieczną infrastrukturę.",
+                btnProjects: "Zobacz Projekty",
+                btnContact: "Skontaktuj się",
+                aboutTitle: "O Mnie",
+                aboutIntro: "Moja przygoda z IT zaczęła się od ciekawości \"jak to działa pod maską\". Jako obywatel Ukrainy, który kontynuuje edukację w Polsce, mam unikalną perspektywę i determinację.",
+                aboutJourney: "Obecnie kończę technikum informatyczne z kwalifikacjami INF.02 i INF.03. Moja droga edukacyjna obejmuje także certyfikaty AWS, Cisco, Linux i Google IT Support.",
+                aboutMotivation: "Mam pasję do networkingu, Linuxa, chmury i cybersecurity. Moje projekty koncentrują się na budowaniu bezpiecznej infrastruktury i tworzeniu efektywnych aplikacji webowych.",
+                aboutGoals: "Moim celem jest praca jako Junior Network & Systems Engineer, gdzie mogę zastosować wiedzę w środowisku produkcyjnym.",
+                timelineTitle: "Moja Ścieżka",
+                time1Title: "Kwalifikacja INF.03",
+                time1Desc: "Tworzenie aplikacji internetowych i baz danych oraz administrowanie bazami",
+                time2Title: "Projekty Open Source",
+                time2Desc: "Rozwój własnych projektów i udział w społeczności IT",
+                time3Title: "CCNA",
+                time3Desc: "Cisco Certified Network Associate - podstawy sieci komputerowych",
+                time4Title: "Kwalifikacja INF.02",
+                time4Desc: "Administracja i eksploatacja systemów komputerowych, urządzeń peryferyjnych i sieci",
+                skillsTitle: "Moje Umiejętności",
+                expTitle: "Doświadczenie",
+                exp1Title: "Stażysta IT Support - Kompland s.c.",
+                exp1Date: "05/2025 (160h)",
+                exp1Desc: "Diagnostyka sprzętu, instalacja systemów operacyjnych, backup danych, obsługa klienta.",
+                exp2Title: "Praktykant IT - PGKiM Sandomierz",
+                exp2Date: "10/2023 (140h)",
+                exp2Desc: "Wsparcie działu IT, konfiguracja stacji roboczych, podstawy administracji siecią lokalną.",
+                projectsTitle: "Moje Projekty",
+                project1Title: "Automatyzacja Zapory Linux",
+                project1Desc: "Kompleksowa automatyzacja UFW i Fail2ban z raportowaniem w Markdown. System loguje ataki i generuje raporty.",
+                project2Title: "Alerty Telegram + Fail2ban",
+                project2Desc: "System powiadomień w czasie rzeczywistym wysyłający podsumowania blokad IP do Telegram. Dashboard HTML ze statystykami.",
+                project3Title: "Sieć Korporacyjna VPN/DMZ",
+                project3Desc: "Site-to-site VPN z IPsec, DMZ, NAT/PAT, OSPF, VLAN, ACLs. Symulacja bezpiecznej sieci korporacyjnej w Packet Tracer.",
+                project4Title: "OSPF + IPv6 + QoS",
+                project4Desc: "Zaawansowana sieć z Inter-VLAN routing, OSPFv3, dual-stack IPv6 (SLAAC/DHCPv6) i QoS. Skalowalność i troubleshooting.",
+                project5Title: "Laboratorium VLAN & DHCP",
+                project5Desc: "Segmentacja sieci przez VLANy, Router-on-a-Stick, DHCP dla automatycznej konfiguracji IP oraz static routing.",
+                project6Title: "Fail2ban Security",
+                project6Desc: "Konfiguracja Fail2ban na Ubuntu. Log parser generates attack statistics in Markdown with threat analysis.",
+                contactTitle: "Szukasz Juniora?",
+                contactText: "Jestem gotowy do podjęcia stażu lub pracy. Posiadam wiedzę z certyfikatów i praktykę z własnych projektów.",
+                time1Date: "2026 (Planowane)",
+                time2Date: "2025",
+                time3Date: "2024",
+                time4Date: "2024 (Ukończone)",
+                btnDownloadCv: "Pobierz CV",
+                footerText: "&copy; 2026 Serhii Gorin. Wszelkie prawa zastrzeżone."
+            },
+            en: {
+                navAbout: "About Me",
+                navSkills: "Skills",
+                navExperience: "Experience",
+                navProjects: "Projects",
+                navContact: "Contact",
+                greeting: "Hi there!",
+                statusTag: "🚀 Open to Work",
+                heroDesc: "Bridging the world of <strong>Web Apps (INF.03)</strong> with a solid foundation in <strong>Networks & Systems (CCNA/Linux)</strong>. I build efficient code and secure infrastructure.",
+                btnProjects: "See Projects",
+                btnContact: "Contact Me",
+                aboutTitle: "About Me",
+                aboutIntro: "My IT journey began with curiosity about \"how it works under the hood.\" As a Ukrainian citizen continuing education in Poland, I have a unique perspective and determination.",
+                aboutJourney: "Currently completing IT technical school with INF.02 and INF.03 qualifications. My path includes AWS, Cisco, Linux, and Google IT Support certifications.",
+                aboutMotivation: "I have a passion for networking, Linux, cloud, and cybersecurity. My projects focus on building secure infrastructure and creating efficient web apps.",
+                aboutGoals: "My goal is to work as a Junior Network & Systems Engineer, applying my knowledge in a production environment.",
+                timelineTitle: "My Path",
+                time1Title: "INF.03 Qualification",
+                time1Desc: "Web application development, database creation and administration",
+                time2Title: "Open Source Projects",
+                time2Desc: "Developing personal projects and participating in the IT community",
+                time3Title: "CCNA",
+                time3Desc: "Cisco Certified Network Associate - Network fundamentals",
+                time4Title: "INF.02 Qualification",
+                time4Desc: "Administration and operation of computer systems, peripherals, and local networks",
+                skillsTitle: "My Skills",
+                expTitle: "Experience",
+                exp1Title: "IT Support Intern - Kompland s.c.",
+                exp1Date: "05/2025 (160h)",
+                exp1Desc: "Hardware diagnostics, OS installation, data backup, customer service.",
+                exp2Title: "IT Trainee - PGKiM Sandomierz",
+                exp2Date: "10/2023 (140h)",
+                exp2Desc: "IT support, workstation configuration, basic LAN administration.",
+                projectsTitle: "My Projects",
+                project1Title: "Linux Firewall Automation",
+                project1Desc: "Comprehensive UFW and Fail2ban automation with Markdown reporting. Logs attacks and generates security reports.",
+                project2Title: "Telegram Alerts + Fail2ban",
+                project2Desc: "Real-time notification system sending IP block summaries to Telegram. HTML dashboard with statistics.",
+                project3Title: "Corporate Network VPN/DMZ",
+                project3Desc: "Site-to-site VPN with IPsec, DMZ, NAT/PAT, OSPF, VLAN, ACLs. Secure corporate network simulation in Packet Tracer.",
+                project4Title: "OSPF + IPv6 + QoS",
+                project4Desc: "Advanced network with Inter-VLAN routing, OSPFv3, dual-stack IPv6 (SLAAC/DHCPv6), and QoS. Scalability and troubleshooting.",
+                project5Title: "VLAN & DHCP Lab",
+                project5Desc: "Network segmentation via VLANs, Router-on-a-Stick, DHCP for auto-config, and static routing.",
+                project6Title: "Fail2ban Security",
+                project6Desc: "Fail2ban configuration on Ubuntu. Log parser generates attack statistics in Markdown with threat analysis.",
+                contactTitle: "Hiring a Junior?",
+                contactText: "I am ready for an internship or junior role. I bring certified knowledge and hands-on project experience.",
+                time1Date: "2026 (Planned)",
+                time2Date: "2025",
+                time3Date: "2024",
+                time4Date: "2024 (Completed)",
+                btnDownloadCv: "Download CV",
+                footerText: "&copy; 2026 Serhii Gorin. All rights reserved."
+            }
+        };
+
+        let isPolish = true;
+        const langBtn = document.getElementById('langBtn');
+        
+        langBtn.addEventListener('click', () => {
+            isPolish = !isPolish;
+            const lang = isPolish ? 'pl' : 'en';
+            const t = translations[lang];
+
+            langBtn.textContent = isPolish ? 'EN' : 'PL';
+            document.documentElement.lang = lang;
+
+            for (const [key, value] of Object.entries(t)) {
+                const el = document.getElementById(key);
+                if (el) el.innerHTML = value;
+            }
+        });
+
+        const themeBtn = document.getElementById('themeBtn');
+        
+        const savedTheme = 'light'; 
+        document.body.setAttribute('data-theme', savedTheme);
+        themeBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+
+        themeBtn.addEventListener('click', () => {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            themeBtn.textContent = newTheme === 'light' ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            
+            const barObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    }
+                });
+            }, observerOptions);
+            
+            barObserver.observe(bar);
+        });
+    </script>
+</body>
+</html>
